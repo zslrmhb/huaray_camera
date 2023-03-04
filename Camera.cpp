@@ -3,6 +3,7 @@
 //
 
 #include "Camera.h"
+#include "readconfig.h"
 Camera::Camera() {
     this->status = IMV_OK;
     IMV_HANDLE temp_devHandle = NULL;
@@ -49,8 +50,8 @@ int Camera::init() {
     }
 
     // Set feature value
-
-    this->status = setProperty(1000.00,1280,1000);
+    getVals();
+    this->status = setProperty(exposure,width,height);
 
     // start grabbing
     this->status = IMV_StartGrabbing(this->devHandle);

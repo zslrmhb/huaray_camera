@@ -7,6 +7,7 @@
 #include "camera_include/IMVApi.h"
 #include <opencv2/opencv.hpp>
 #include <exception>
+
 class Camera {
 public:
     Camera();

@@ -13,7 +13,7 @@ include_directories( ${OpenCV_INCLUDE_DIRS} )
 
 
 
-add_executable(huaray_camera main.cpp Camera.cpp Camera.h auto_aim.cpp armor.cpp auto_aim.hpp armor.hpp )
+add_executable(huaray_camera main.cpp Camera.cpp Camera.h auto_aim.cpp armor.cpp auto_aim.hpp armor.hpp readconfig.cpp readconfig.h)
 message(STATUS ${CAMERA_LIB})
 
 message(${CAMERA_LIB})
