@@ -15,6 +15,7 @@
 #include "rapidjson/document.h"
 #include "rapidjson/filereadstream.h"
 #include <cstdio>
+#include "Camera.h"
 using namespace std;
 using namespace cv;
 using namespace rapidjson;
@@ -33,7 +34,7 @@ vector<Mat> savedImages;
 
 vector<vector<Point2f>> markerCorners, rejectCandidates;
 
-VideoCapture vid(0);
+//VideoCapture vid(0);
 
 void createKnownBoardPosition(Size boardSize, float squareEdgeLength, vector<Point3f>& corners){
     for(int i = 0; i < boardSize.height; i++){
@@ -104,17 +105,19 @@ bool saveCameraCalibration(string name, Mat cameraMatrix, Mat distanceCoefficien
 int getVals() {
 
 
-    if(!vid.isOpened()){
-        return 1;
-    }
+//    if(!vid.isOpened()){
+//        return 1;
+//    }
 
     int framesPerSecond = 20;
     namedWindow("Webcam", cv::WINDOW_AUTOSIZE);
-
+    Camera camera;
+    camera.init();
+    camera.getImage(frame);
     while(true){
-        if(!vid.read(frame)){
-            break;
-        }
+//        if(!vid.read(frame)){
+//            break;
+//        }
         vector<Vec2f> foundPoints;
         bool found = false;
 
@@ -148,7 +151,6 @@ int getVals() {
             case 27:
                 //exit
                 return 0;
-                break;
         }
     }
 
